@@ -328,4 +328,6 @@ enum CacheControlScope {
 "The `Upload` scalar type represents a file upload."
 scalar Upload
 
+extend scalar JSONObject @runtimeType(name: "System.String") @serializationType(name: "System.String")
+
 directive @cacheControl(maxAge: Int scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
