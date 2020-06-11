@@ -1,0 +1,43 @@
+query getServerInfo{
+  serverInfo {
+    name
+    company
+    description
+    adminContact
+    termsOfService
+    roles {
+      name
+      description
+    }
+  }
+}
+
+query getMyProfile{
+  user {
+    ...baseUser
+    role
+  }
+}
+
+query getStream($id: String!) {
+  stream(id: $id){
+    name
+    commits {
+      totalCount
+      commits {
+        id
+        author {
+          ...baseUser
+        }
+        createdAt
+        data
+      }
+    }
+  }
+}
+
+fragment baseUser on User {
+  id 
+  name
+  email
+}
